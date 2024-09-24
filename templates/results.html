@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Financial Analysis Results</h1>
+    <table border="1">
+        <tr>
+            <th>Flag</th>
+            <th>Value</th>
+        </tr>
+        {% for key, value in result['flags'].items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>
+                {% if value == 0 %}
+                    RED
+                {% elif value == 1 %}
+                    GREEN
+                {% elif value == 2 %}
+                    AMBER
+                {% elif value == 3 %}
+                    MEDIUM RISK
+                {% elif value == 4 %}
+                    WHITE
+                {% else %}
+                    None
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('upload_file') }}">Upload another file</a>
+</body>
+</html>
